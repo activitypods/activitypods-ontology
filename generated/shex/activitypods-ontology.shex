@@ -1,0 +1,115 @@
+# metamodel_version: 1.7.0
+BASE <https://activitypods.org/ns/core#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX as: <https://www.w3.org/ns/activitystreams#>
+PREFIX linkml: <https://w3id.org/linkml/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<Activity>  (
+    CLOSED {
+       (  $<Activity_tes> rdf:type . * ;
+          rdf:type [ as:Activity ] ?
+       )
+    } OR @<Install> OR @<Notification>
+)
+
+<ClassDescription> CLOSED {
+    (  $<ClassDescription_tes> (  <icon> @linkml:Uri ? ;
+          <openEndpoint> @linkml:Uri ? ;
+          <labelPredicate> @linkml:Uriorcurie ? ;
+          <describedClass> @linkml:Uriorcurie ? ;
+          <describedBy> @linkml:Uriorcurie ? ;
+          skos:prefLabel @linkml:Uriorcurie ?
+       ) ;
+       rdf:type [ <ClassDescription> ] ?
+    )
+}
+
+<Collection> CLOSED {
+    (  $<Collection_tes> rdf:type . * ;
+       rdf:type [ as:Collection ] ?
+    )
+}
+
+<EventFormat> CLOSED {
+    (  $<EventFormat_tes> rdfs:label @linkml:Uriorcurie ? ;
+       rdf:type [ <EventFormat> ] ?
+    )
+}
+
+<Install> CLOSED {
+    (  $<Install_tes> (  &<Activity_tes> ;
+          rdf:type [ as:Activity ] ? ;
+          <acceptedAccessNeeds> [ <ReadInbox> <ReadOutbox> <PostOutbox> <CreateWacGroup> <CreateCollection> <QuerySparqlEndpoint>
+             <UpdateWebId> ] * ;
+          <acceptedSpecialRights> [ <ReadInbox> <ReadOutbox> <PostOutbox> <CreateWacGroup> <CreateCollection> <QuerySparqlEndpoint>
+             <UpdateWebId> ] *
+       ) ;
+       rdf:type [ <Install> ] ?
+    )
+}
+
+<Notification> CLOSED {
+    (  $<Notification_tes> (  &<Activity_tes> ;
+          rdf:type [ as:Activity ] ?
+       ) ;
+       rdf:type [ <Notification> ] ?
+    )
+}
+
+<OrderedCollection> CLOSED {
+    (  $<OrderedCollection_tes> rdf:type . * ;
+       rdf:type [ as:OrderedCollection ] ?
+    )
+}
+
+<PodProvider> CLOSED {
+    (  $<PodProvider_tes> (  <area> @linkml:String ? ;
+          <locales> @linkml:String * ;
+          <providedBy> @linkml:String ?
+       ) ;
+       rdf:type [ <PodProvider> ]
+    )
+}
+

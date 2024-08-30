@@ -1,0 +1,138 @@
+@prefix apods: <https://activitypods.org/ns/core#> .
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+apods:ClassDescription a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Description of an RDFS class used in Type Registration" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Class Description" ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "The app registering a given ClassDescription." ;
+            sh:maxCount 1 ;
+            sh:name "App of ClassDescription" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path apods:describedBy ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The predicate used as a human-readable label for resources of a given class" ;
+            sh:maxCount 1 ;
+            sh:name "Label Predicate of Resource" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path apods:labelPredicate ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path skos:prefLabel ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The class described by a ClassDescription" ;
+            sh:maxCount 1 ;
+            sh:name "Described Class" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path apods:describedClass ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path apods:openEndpoint ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The icon to show for a resource's class." ;
+            sh:maxCount 1 ;
+            sh:name "Type Icon" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path apods:icon ] ;
+    sh:targetClass apods:ClassDescription .
+
+apods:EventFormat a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path rdfs:label ] ;
+    sh:targetClass apods:EventFormat .
+
+apods:Install a sh:NodeShape ;
+    rdfs:subClassOf as:Activity ;
+    sh:closed true ;
+    sh:description "Activity to Install an app using Solid Application Interoperability" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Install Activity" ;
+    sh:property [ sh:description "The access needs accepted in an app registration." ;
+            sh:in ( apods:ReadInbox apods:ReadOutbox apods:PostOutbox apods:CreateWacGroup apods:CreateCollection apods:QuerySparqlEndpoint apods:UpdateWebId ) ;
+            sh:name "Accepted Access Needs" ;
+            sh:order 0 ;
+            sh:path apods:acceptedAccessNeeds ],
+        [ sh:description "The special access needs accepted in an app registration." ;
+            sh:in ( apods:ReadInbox apods:ReadOutbox apods:PostOutbox apods:CreateWacGroup apods:CreateCollection apods:QuerySparqlEndpoint apods:UpdateWebId ) ;
+            sh:name "Accepted Special Access Needs" ;
+            sh:order 1 ;
+            sh:path apods:acceptedSpecialRights ] ;
+    sh:targetClass apods:Install .
+
+apods:Notification a sh:NodeShape ;
+    rdfs:subClassOf as:Activity ;
+    sh:closed true ;
+    sh:description "A notification activity from an app to notify the user." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "User Notification" ;
+    sh:targetClass apods:Notification .
+
+apods:PodProvider a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "General information about a pod provider" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Pod Provider Description" ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "The base URL of a Pod Provider." ;
+            sh:maxCount 1 ;
+            sh:name "Base URL" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path apods:baseUrl ],
+        [ sh:datatype xsd:string ;
+            sh:description "A set of supported locale language tags of a Pod Provider." ;
+            sh:name "Locales" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path apods:locales ],
+        [ sh:datatype xsd:string ;
+            sh:description "The instance name of the Pod Provider" ;
+            sh:maxCount 1 ;
+            sh:name "Pod Provider Name" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path apods:providedBy ],
+        [ sh:datatype xsd:string ;
+            sh:description "A human-readable location string of a Pod Provider." ;
+            sh:maxCount 1 ;
+            sh:name "Location description" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path apods:area ] ;
+    sh:targetClass apods:PodProvider .
+
+as:Collection a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass as:Collection .
+
+as:OrderedCollection a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass as:OrderedCollection .
+
+as:Activity a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass as:Activity .
+

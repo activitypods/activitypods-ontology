@@ -1,0 +1,201 @@
+{
+    "$defs": {
+        "AccessNeed": {
+            "description": "Solid Application Interoperability Access Needs that are custom to ActivityPods.",
+            "enum": [
+                "ReadInbox",
+                "ReadOutbox",
+                "PostOutbox",
+                "CreateWacGroup",
+                "CreateCollection",
+                "QuerySparqlEndpoint",
+                "UpdateWebId"
+            ],
+            "title": "AccessNeed",
+            "type": "string"
+        },
+        "Activity": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Activity",
+            "type": "object"
+        },
+        "ClassDescription": {
+            "additionalProperties": false,
+            "description": "Description of an RDFS class used in Type Registration",
+            "properties": {
+                "describedBy": {
+                    "description": "The app registering a given ClassDescription.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "describedClass": {
+                    "description": "The class described by a ClassDescription",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "icon": {
+                    "description": "The icon to show for a resource's class.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "labelPredicate": {
+                    "description": "The predicate used as a human-readable label for resources of a given class",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "openEndpoint": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "prefLabel": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ClassDescription",
+            "type": "object"
+        },
+        "Collection": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Collection",
+            "type": "object"
+        },
+        "EventFormat": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "label": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "EventFormat",
+            "type": "object"
+        },
+        "EventStatus": {
+            "description": "",
+            "enum": [
+                "Open",
+                "Coming",
+                "Closed",
+                "Finished"
+            ],
+            "title": "EventStatus",
+            "type": "string"
+        },
+        "Install": {
+            "additionalProperties": false,
+            "description": "Activity to Install an app using Solid Application Interoperability",
+            "properties": {
+                "acceptedAccessNeeds": {
+                    "description": "The access needs accepted in an app registration.",
+                    "items": {
+                        "$ref": "#/$defs/AccessNeed"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "acceptedSpecialRights": {
+                    "description": "The special access needs accepted in an app registration.",
+                    "items": {
+                        "$ref": "#/$defs/AccessNeed"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Install",
+            "type": "object"
+        },
+        "Notification": {
+            "additionalProperties": false,
+            "description": "A notification activity from an app to notify the user.",
+            "title": "Notification",
+            "type": "object"
+        },
+        "OrderedCollection": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "OrderedCollection",
+            "type": "object"
+        },
+        "PodProvider": {
+            "additionalProperties": false,
+            "description": "General information about a pod provider",
+            "properties": {
+                "area": {
+                    "description": "A human-readable location string of a Pod Provider.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "baseUrl": {
+                    "description": "The base URL of a Pod Provider.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "locales": {
+                    "description": "A set of supported locale language tags of a Pod Provider.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "providedBy": {
+                    "description": "The instance name of the Pod Provider",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "baseUrl"
+            ],
+            "title": "PodProvider",
+            "type": "object"
+        },
+        "SortOrder": {
+            "description": "",
+            "enum": [
+                "AscOrder",
+                "DescOrder"
+            ],
+            "title": "SortOrder",
+            "type": "string"
+        }
+    },
+    "$id": "http://activitypods.org/ns/core#",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "activitypods-ontology",
+    "type": "object",
+    "version": null
+}

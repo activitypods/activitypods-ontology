@@ -1,0 +1,31 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// Description of an RDFS class used in Type Registration
+message ClassDescription
+ {
+  uri icon = 0
+  uri openEndpoint = 0
+  uriorcurie labelPredicate = 0
+  uriorcurie describedClass = 0
+  uriorcurie describedBy = 0
+  uriorcurie prefLabel = 0
+ }
+message EventFormat
+ {
+  uriorcurie label = 0
+ }
+// Activity to Install an app using Solid Application Interoperability
+message Install
+ {
+ repeated  accessNeed acceptedAccessNeeds = 0
+ repeated  accessNeed acceptedSpecialRights = 0
+ }
+// General information about a pod provider
+message PodProvider
+ {
+  string area = 0
+ repeated  string locales = 0
+  uri baseUrl = 0
+  string providedBy = 0
+ }

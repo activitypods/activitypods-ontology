@@ -1,0 +1,20 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "b2da87eb7835bfec748a76823d098cac85e8363a",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "activitypods-ontology",
+      "__project_slug": "activitypods_ontology",
+      "github_org": "activitypods",
+      "__source_path": "src/linkml_activitypods/activitypods-ontology.yaml",
+      "project_description": "LinkML ontology for ActivityPods",
+      "license": "Apache Software License 2.0",
+      "create_python_classes": "No",
+      "use_schemasheets": "Yes",
+      "github_token_for_pypi_deployment": "",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}

@@ -1,0 +1,18 @@
+{
+   "apods": "https://activitypods.org/ns/core#",
+   "as": "https://www.w3.org/ns/activitystreams#",
+   "interop": "https://www.w3.org/ns/solid/interop#",
+   "linkml": "https://w3id.org/linkml/",
+   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+   "schema": "http://schema.org/",
+   "skos": "http://www.w3.org/2004/02/skos/core#",
+   "Activity": {
+      "@id": "as:Activity"
+   },
+   "Collection": {
+      "@id": "as:Collection"
+   },
+   "OrderedCollection": {
+      "@id": "as:OrderedCollection"
+   }
+}

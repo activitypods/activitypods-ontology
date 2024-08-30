@@ -1,0 +1,46 @@
+# metamodel_version: 1.7.0
+type Activity
+  {
+  }
+
+type ClassDescription
+  {
+    icon: Uri
+    openEndpoint: Uri
+    labelPredicate: Uriorcurie
+    describedClass: Uriorcurie
+    describedBy: Uriorcurie
+    prefLabel: Uriorcurie
+  }
+
+type Collection
+  {
+  }
+
+type EventFormat
+  {
+    label: Uriorcurie
+  }
+
+type Install
+  {
+    acceptedAccessNeeds: [AccessNeed]
+    acceptedSpecialRights: [AccessNeed]
+  }
+
+type Notification
+  {
+  }
+
+type OrderedCollection
+  {
+  }
+
+type PodProvider
+  {
+    area: String
+    locales: [String]
+    baseUrl: Uri!
+    providedBy: String
+  }
+

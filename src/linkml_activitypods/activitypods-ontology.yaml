@@ -1,0 +1,349 @@
+---
+id: http://activitypods.org/ns/core#
+name: activitypods-ontology
+title: ActivityPods Ontology
+description: LinkML ontology for ActivityPods
+license: Apache Software License 2.0
+see_also:
+  - https://github.com/activitypods/activitypods-ontology
+
+prefixes:
+  apods: https://activitypods.org/ns/core#
+  as: https://www.w3.org/ns/activitystreams#
+  linkml: https://w3id.org/linkml/
+  interop: https://www.w3.org/ns/solid/interop#
+  schema: http://schema.org/
+  skos: http://www.w3.org/2004/02/skos/core#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+default_prefix: apods
+default_range: string
+
+imports:
+  - linkml:types
+
+#
+# Properties
+slots:
+  # See issue on duplicate semapps predicates https://github.com/activitypods/activitypods/issues/283
+  sortField:
+    # Equivalent to semapps:sortPredicate
+    title: Sort Field for Ordering Collection
+    description: The RDF property to order the collection by
+    see_also: https://docs.activitypods.org/architecture/resources-management/#create-custom-collection
+    domain_of: as:OrderedCollection
+  sortOrder:
+    # Equivalent to semapps:sortOrder
+    title: Collection Sort Order
+    description: The sort order of a collection
+    see_also: https://docs.activitypods.org/architecture/resources-management/#create-custom-collection
+    range: SortOrder
+    domain_of:
+      - "as:OrderedCollection"
+  dereferenceItems:
+    # Equivalent to semapps:dereferenceItems
+    range: boolean
+    see_also: https://docs.activitypods.org/architecture/resources-management/#create-custom-collection
+    domain_of:
+      - "as:OrderedCollection"
+
+  capabilities:
+    title: Capabilities ldp resource container
+    description: URI to an actor's container of capabilities. This should be referenced from an actor's WebID.
+    deprecated: For version 3 of ActivityPods, ActivityPods-specific capabilities will be replaced by cryptographically verifiable ZCAPs.
+    see_also: https://docs.activitypods.org/architecture/authorization/#capability-urls
+    # domain_of: WebId
+    range: uri
+
+  # Used by Pod Provider
+  area:
+    title: Location description
+    description: A human-readable location string of a Pod Provider.
+    range: string
+  locales:
+    title: "Locales"
+    description: A set of supported locale language tags of a Pod Provider.
+    comments: As of ActivityPods version 2, only language tags are supported and no regional codes, as for example defined in BCP 47.
+    range: string
+    multivalued: true
+  baseUrl:
+    title: Base URL
+    description: The base URL of a Pod Provider.
+    range: uri
+    identifier: true
+  providedBy:
+    title: Pod Provider Name
+    description: The instance name of the Pod Provider
+    range: string
+
+  contactRequests:
+    title: Contact Requests Collection
+    description: Collection of contact requests to an ActivityPub actor
+    # domain_of: WebId
+    range: uri
+  ignoredContacts:
+    title: Ignored Contacts
+    description: Collection of contacts ignored by an ActivityPub actor
+    # domain_of: WebId
+    range: uri
+  rejectedContacts:
+    title: Rejected Contact Requests
+    description: Collection of contact requests rejected by an ActivityPub actor
+    # domain_of: WebId
+    range: uri
+  contacts:
+    title: Contacts
+    description: Collection of contacts of an ActivityPub actor
+    # domain_of: WebId
+    range: uri
+
+  # App, Type Registration, Class Descriptions
+  defaultApp:
+    title: Default App for Class
+    description: The default app to open a resource of a given RDFS class with.
+    # domain: TypeRegistration
+    range: uri
+  icon:
+    title: Type Icon
+    description: The icon to show for a resource's class.
+    # domain: TypeRegistration
+    range: uri
+  openEndpoint:
+    # TODO: Documentation
+    # domain: TypeRegistration
+    range: uri
+  availableApps:
+    title: Available Apps for Type
+    description: The available apps that are capable of handling a given class
+    # domain: TypeRegistration
+    multivalued: true
+    range: uri
+  labelPredicate:
+    title: Label Predicate of Resource
+    description: The predicate used as a human-readable label for resources of a given class
+    # domain: TypeRegistration, ClassDescription
+    range: uriorcurie
+  describedClass:
+    title: Described Class
+    description: The class described by a ClassDescription
+    # domain: ClassDescription
+    range: uriorcurie
+  describedBy:
+    title: App of ClassDescription
+    description: The app registering a given ClassDescription.
+    # domain: ClassDescription
+    range: uriorcurie
+
+  attendees:
+    title: Attendees of an Event
+    description: The set of a attendees of an event
+    multivalued: true
+    range: uri
+  maxAttendees:
+    title: Maximum Number of Attendees
+    description: The maximum number of actors that are allowed to participate in an event.
+    range: integer
+  closingTime:
+    title: Closing Time of Event
+    description: The datetime at which no new attendees can join an activity
+    range: datetime
+  announcers:
+    title: Announcers of an Activity
+    description: The set of actors authorized to announce an activity
+    multivalued: true
+    range: uri
+  announces:
+    title: Announces of an Activity
+    description: The set of actors authorized to view an activity
+    multivalued: true
+    range: uri
+  hasFormat:
+    title: Type of Event
+    description: The EventFormat type of an event (e.g. a movie night).
+    range: EventFormat
+  hasStatus:
+    title: Status of Event
+    description: The lifecycle status of the event (e.g. open or finished).
+    range: EventStatus
+
+  hasSpecialRights:
+    # domain: AccessNeedGroup, AccessGrant
+    multivalued: true
+    range: uri
+    # TODO
+
+  hasClassDescription:
+    title: Class Description
+    # domain: AccessDescriptionSet
+    # range: ClassDescription
+  registeredClass:
+    title: Registered Class
+    description: Class registered by an app to whose resources it has certain access rights.
+    # domain: AccessNeed, DataGrant
+    range: uriorcurie # rdfs:Class
+  registeredContainer:
+    title: Type Registration Container
+    description: The container that contains a registered type's resources from a type registration.
+    # domain: DataGrant
+    range: uri # LDP Container
+  acceptedAccessNeeds:
+    title: Accepted Access Needs
+    description: The access needs accepted in an app registration.
+    # domain: Install
+    multivalued: true
+    range: AccessNeed
+  acceptedSpecialRights:
+    title: Accepted Special Access Needs
+    description: The special access needs accepted in an app registration.
+    # domain: Install
+    multivalued: true
+    range: AccessNeed
+
+  # TODO: Are those used?
+  preferredForTypes:
+  application:
+  preferredForClass:
+
+  #### Semapps slots
+  # # TODO: Can we replace those two?
+  # title:
+  # content:
+  #
+  # itemsPerPage:
+  #   range: integer
+  # localPath:
+  # fileName:
+  # mimeType:
+  # message:
+  # receiptId:
+  # doNotMirror:
+  #   range: boolean
+  # singleMirroredResource:
+  # settings:
+
+  # External but required for class definitions
+  prefLabel:
+    slot_uri: skos:prefLabel
+    range: uriorcurie
+
+  label:
+    slot_uri: rdfs:label
+    range: uriorcurie
+
+#
+# Classes
+classes:
+  PodProvider:
+    title: Pod Provider Description
+    description: General information about a pod provider
+    slots:
+      - area
+      - locales
+      - baseUrl
+      - providedBy
+
+  ClassDescription:
+    title: Class Description
+    description: Description of an RDFS class used in Type Registration
+    slots:
+      - icon
+      - openEndpoint
+      - labelPredicate
+      - describedClass
+      - describedBy
+      - prefLabel
+
+  Install:
+    title: Install Activity
+    description: Activity to Install an app using Solid Application Interoperability
+    is_a: Activity
+    slots:
+      - acceptedAccessNeeds
+      - acceptedSpecialRights
+
+  Notification:
+    title: User Notification
+    description: A notification activity from an app to notify the user.
+    is_a: Activity
+
+  EventFormat:
+    slots:
+      - label
+
+  # External
+  Activity:
+    class_uri: as:Activity
+  Collection:
+    class_uri: as:Collection
+  OrderedCollection:
+    class_uri: as:OrderedCollection
+
+  #### Semapps
+  # Page:
+  # File:
+
+#
+# Enums
+enums:
+  AccessNeed:
+    title: SAI Access Needs specific to ActivityPods
+    description: Solid Application Interoperability Access Needs that are custom to ActivityPods.
+    see_also:
+      - https://docs.activitypods.org/app-framework/backend/application-registration/#special-rights
+      - https://solid.github.io/data-interoperability-panel/primer/application.html
+    # is_a: "interop:AccessNeed"
+    # reachable_from:
+    #   source_ontology: interop
+    #   source_nodes:
+    #     - interop:AccessNeed
+    #   include_self: false
+    #   relationship_types:reachable_from
+    #     - rdfs:subClassOf
+
+    permissible_values:
+      ReadInbox:
+        title: Read Inbox Access Need
+        description: Permission to read and watch the user's inbox.
+        meaning: apods:ReadInbox
+      ReadOutbox:
+        title: Read Outbox Access Need
+        description: Permission to read and watch the user's outbox
+        meaning: apods:ReadOutbox
+      PostOutbox:
+        title: Post to Outbox Access Need
+        description: Permission to post to the outbox as the user
+        meaning: apods:PostOutbox
+      CreateWacGroup:
+        title: Create WAC Group Access Need
+        description: Permission to new create Web Access Control (WAC) groups.
+        meaning: apods:CreateWacGroup
+      CreateCollection:
+        title: Create Collection Access Need
+        description: Permission to create new ActivityStreams collections.
+        meaning: apods:CreateCollection
+      QuerySparqlEndpoint:
+        title: Query SPARQL Database Access Need
+        description: Permission to query the Pod's SPARQL endpoint (with WAC permissions applied).
+        meaning: apods:QuerySparqlEndpoint
+      UpdateWebId:
+        title: Modify Users's WebId Access Need
+        description: "Permission to modify the user's WebID resource. Caution; Only highly trusted apps should be allowed to modify the WebId."
+        meaning: apods:UpdateWebId
+
+  # TODOs: values exist in both apods and semapps
+  SortOrder:
+    permissible_values:
+      AscOrder:
+        meaning: apods:AscOrder
+      DescOrder:
+        meaning: apods:DescOrder
+
+  EventStatus:
+    permissible_values:
+      Open:
+        meaning: apods:Open
+      Coming:
+        meaning: apods:Coming
+      Closed:
+        meaning: apods:Closed
+      Finished:
+        meaning: apods:Finished
