@@ -20,6 +20,18 @@
             "title": "Activity",
             "type": "object"
         },
+        "ActivityGrant": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ActivityGrant",
+            "type": "object"
+        },
+        "Authorization": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Authorization",
+            "type": "object"
+        },
         "ClassDescription": {
             "additionalProperties": false,
             "description": "Description of an RDFS class used in Type Registration",

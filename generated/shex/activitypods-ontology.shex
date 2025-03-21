@@ -4,6 +4,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX acl: <http://www.w3.org/ns/auth/acl#>
 PREFIX as: <https://www.w3.org/ns/activitystreams#>
 PREFIX linkml: <https://w3id.org/linkml/>
 
@@ -53,6 +54,18 @@ linkml:Sparqlpath xsd:string
        )
     } OR @<Install> OR @<Notification>
 )
+
+<ActivityGrant> CLOSED {
+    (  $<ActivityGrant_tes> rdf:type . * ;
+       rdf:type [ <ActivityGrant> ] ?
+    )
+}
+
+<Authorization> CLOSED {
+    (  $<Authorization_tes> rdf:type . * ;
+       rdf:type [ acl:Authorization ] ?
+    )
+}
 
 <ClassDescription> CLOSED {
     (  $<ClassDescription_tes> (  <icon> @linkml:Uri ? ;

@@ -8,6 +8,7 @@ see_also:
   - https://github.com/activitypods/activitypods-ontology
 
 prefixes:
+  acl: http://www.w3.org/ns/auth/acl#
   apods: https://activitypods.org/ns/core#
   as: https://www.w3.org/ns/activitystreams#
   linkml: https://w3id.org/linkml/
@@ -197,6 +198,14 @@ slots:
     # domain: Install
     multivalued: true
     range: AccessNeed
+  hasActivityGrant:
+    title: Activity Grant
+    description: Grant to perform an action on an outbox
+    range: ActivityGrant
+  hasAuthorization:
+    title: Authorization
+    description: An authorization to read, write, or control one or more resources
+    range: Authorization
 
   # TODO: Are those used?
   preferredForTypes:
@@ -276,7 +285,10 @@ classes:
     class_uri: as:Collection
   OrderedCollection:
     class_uri: as:OrderedCollection
-
+  Authorization:
+    class_uri: acl:Authorization
+  ActivityGrant:
+    values_from: as:Activity
   #### Semapps
   # Page:
   # File:

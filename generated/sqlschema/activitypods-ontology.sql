@@ -23,6 +23,10 @@
 --     * Slot: id Description: 
 -- # Class: "OrderedCollection" Description: ""
 --     * Slot: id Description: 
+-- # Class: "Authorization" Description: ""
+--     * Slot: id Description: 
+-- # Class: "ActivityGrant" Description: ""
+--     * Slot: id Description: 
 -- # Class: "PodProvider_locales" Description: ""
 --     * Slot: PodProvider_baseUrl Description: Autocreated FK slot
 --     * Slot: locales Description: A set of supported locale language tags of a Pod Provider.
@@ -71,6 +75,14 @@ CREATE TABLE "Collection" (
 	PRIMARY KEY (id)
 );
 CREATE TABLE "OrderedCollection" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "Authorization" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE "ActivityGrant" (
 	id INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );

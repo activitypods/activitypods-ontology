@@ -1,5 +1,5 @@
 # Auto generated from activitypods-ontology.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-08-30T17:32:22
+# Generation date: 2025-03-21T16:21:35
 # Schema: activitypods-ontology
 #
 # id: http://activitypods.org/ns/core#
@@ -32,6 +32,7 @@ version = None
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
+ACL = CurieNamespace('acl', 'http://www.w3.org/ns/auth/acl#')
 APODS = CurieNamespace('apods', 'https://activitypods.org/ns/core#')
 AS = CurieNamespace('as', 'https://www.w3.org/ns/activitystreams#')
 INTEROP = CurieNamespace('interop', 'https://www.w3.org/ns/solid/interop#')
@@ -210,6 +211,24 @@ class OrderedCollection(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = APODS.OrderedCollection
 
 
+class Authorization(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ACL["Authorization"]
+    class_class_curie: ClassVar[str] = "acl:Authorization"
+    class_name: ClassVar[str] = "Authorization"
+    class_model_uri: ClassVar[URIRef] = APODS.Authorization
+
+
+class ActivityGrant(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = APODS["ActivityGrant"]
+    class_class_curie: ClassVar[str] = "apods:ActivityGrant"
+    class_name: ClassVar[str] = "ActivityGrant"
+    class_model_uri: ClassVar[URIRef] = APODS.ActivityGrant
+
+
 # Enumerations
 class AccessNeed(EnumDefinitionImpl):
     """
@@ -380,6 +399,12 @@ slots.acceptedAccessNeeds = Slot(uri=APODS.acceptedAccessNeeds, name="acceptedAc
 
 slots.acceptedSpecialRights = Slot(uri=APODS.acceptedSpecialRights, name="acceptedSpecialRights", curie=APODS.curie('acceptedSpecialRights'),
                    model_uri=APODS.acceptedSpecialRights, domain=None, range=Optional[Union[Union[str, "AccessNeed"], List[Union[str, "AccessNeed"]]]])
+
+slots.hasActivityGrant = Slot(uri=APODS.hasActivityGrant, name="hasActivityGrant", curie=APODS.curie('hasActivityGrant'),
+                   model_uri=APODS.hasActivityGrant, domain=None, range=Optional[Union[dict, ActivityGrant]])
+
+slots.hasAuthorization = Slot(uri=APODS.hasAuthorization, name="hasAuthorization", curie=APODS.curie('hasAuthorization'),
+                   model_uri=APODS.hasAuthorization, domain=None, range=Optional[Union[dict, Authorization]])
 
 slots.preferredForTypes = Slot(uri=APODS.preferredForTypes, name="preferredForTypes", curie=APODS.curie('preferredForTypes'),
                    model_uri=APODS.preferredForTypes, domain=None, range=Optional[str])

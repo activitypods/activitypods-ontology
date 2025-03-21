@@ -15,6 +15,8 @@ LinkML ontology for ActivityPods
  * [Activity](Activity.md)
      * [Install](Install.md) - Activity to Install an app using Solid Application Interoperability
      * [Notification](Notification.md) - A notification activity from an app to notify the user.
+ * [ActivityGrant](ActivityGrant.md)
+ * [Authorization](Authorization.md)
  * [ClassDescription](ClassDescription.md) - Description of an RDFS class used in Type Registration
  * [Collection](Collection.md)
  * [EventFormat](EventFormat.md)
@@ -43,6 +45,8 @@ LinkML ontology for ActivityPods
  * [dereferenceItems](dereferenceItems.md)
  * [describedBy](describedBy.md) - The app registering a given ClassDescription.
  * [describedClass](describedClass.md) - The class described by a ClassDescription
+ * [hasActivityGrant](hasActivityGrant.md) - Grant to perform an action on an outbox
+ * [hasAuthorization](hasAuthorization.md) - An authorization to read, write, or control one or more resources
  * [hasClassDescription](hasClassDescription.md)
  * [hasFormat](hasFormat.md) - The EventFormat type of an event (e.g. a movie night).
  * [hasSpecialRights](hasSpecialRights.md)

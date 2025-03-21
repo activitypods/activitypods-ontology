@@ -3,6 +3,14 @@ type Activity
   {
   }
 
+type ActivityGrant
+  {
+  }
+
+type Authorization
+  {
+  }
+
 type ClassDescription
   {
     icon: Uri
